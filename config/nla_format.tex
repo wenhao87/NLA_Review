@@ -1,0 +1,82 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% ID: format.tex whchen
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% page no. on top right
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+
+% color alias
+\definecolor{bgcolor}{RGB}{13, 12, 12}
+\definecolor{ttcolor}{RGB}{0, 255, 0}
+
+% page background color
+\pagecolor{bgcolor}\afterpage{\nopagecolor}
+
+% text color
+\makeatletter
+\newcommand{\globalcolor}[1]{
+    \color{#1}\global\let\default@color\current@color
+}
+\makeatother
+
+\AtBeginDocument{\globalcolor{ttcolor}}
+
+% global figure path
+\graphicspath{{../image/}}
+
+% global par spave
+\setlength{\parskip}{3em}
+
+% global array stretch
+\renewcommand*{\arraystretch}{1.5}
+
+% global font
+\renewcommand*{\familydefault}{\ttdefault}
+
+% global bib style
+\bibliographystyle{alpha}
+
+% control width of algo
+\newlength\marincrease
+\makeatletter
+\newenvironment{algo}[2][htbp]{
+    \renewcommand{\@algocf@start}{
+        \setlength\marincrease{#2}
+        \@algoskip
+        \begin{lrbox}{\algocf@algobox}
+            \begin{minipage}{\dimexpr\textwidth+2\marincrease\relax}
+                \setlength{\algowidth}{\hsize}
+                \vbox\bgroup    % save all the algo in a box
+                \hbox to\algowidth\bgroup\hbox to \algomargin{\hfill}\vtop\bgroup
+                \ifthenelse{\boolean{algocf@slide}}{\parskip 0.5ex\color{black}}{}
+                % initialization
+                \addtolength{\hsize}{-1.5\algomargin}
+                \let\@mathsemicolon=\;\def\;{\ifmmode\@mathsemicolon\else\@endalgoln\fi}
+                \raggedright\AlFnt{}
+                \ifthenelse{\boolean{algocf@slide}}{\IncMargin{\skipalgocfslide}}{}
+                \@algoinsideskip
+                %   \let\@emathdisplay=\]\def\]{\algocf@endline\@emathdisplay\nl}%
+    }
+    \renewcommand{\@algocf@finish}{
+                \@algoinsideskip
+                \egroup % end of vtop which contain all the text
+                \hfill\egroup   % end of hbox wich contains [margin][vtop]
+                \ifthenelse{\boolean{algocf@slide}}{\DecMargin{\skipalgocfslide}}{}
+                \egroup % end of main vbox
+            \end{minipage}
+        \end{lrbox}
+        \makebox[\linewidth][c]{\algocf@makethealgo} % print the algo
+        \@algoskip
+        % restore dimension and macros
+        \setlength{\hsize}{\algowidth}
+        \lineskip\normallineskip\setlength{\skiptotal}{\@defaultskiptotal}
+        \let\;=\@mathsemicolon%
+        \let\]=\@emathdisplay%
+    }
+    \begin{algorithm}[#1]
+}{\end{algorithm}}
+\makeatother

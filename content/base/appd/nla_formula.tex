@@ -1,0 +1,326 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% ID: formula.tex whchen
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \begin{fleqn}[⟨margin⟩] ... \end{fleqn}
+% \begin{ceqn} ... \end{ceqn}
+% \eq{⟨formula⟩} = \begin{equation} ⟨formula ⟩ \end{equation}
+% \eqalign{⟨formulas⟩} =
+% \begin{equation} \begin{darray}{rcl} ⟨formulas⟩ \end{darray} \end{equation}
+
+\setcounter{page}{1}
+
+\lfm{
+	\label{eq:taylor_series}
+	f(x) = f(a) + f'(a)(x-a) + \dfrac{f''(a)}{2!}(x-a)^2 + \dfrac{f^{(3)}(a)}{3!}(x-a)^3 + \cdots + \dfrac{f^{(n)}(a)}{n!}(x-a)^n + \cdots
+}
+
+\lfm{
+	\label{eq:func_err_est}
+	f(x)-f(\tilde{x}) \approx f'(\tilde{x})(x-\tilde{x}) + \dfrac{1}{2}f'(\tilde{\xi})(x-\tilde{x})^2 \underset{\fvt{e}=\fvt{x-\tilde{x}}\leq\vep}{\frdbs{\Rightarrow}}
+	\begin{aligned}
+		\vep\fbt{f(x)} & \leq
+		\fvt{f'(\tilde{x})}\vep(x)+\dfrac{\fvt{f''(\xi)}}{2}\vep^2(x) \\
+		& \lessapprox \fvt{f'(\tilde{x})}\vep(x) \underset{f'(x) \approx f'(\tilde{x})}{\frdbs{=}} \fvt{f'(x)}\vep(x)
+	\end{aligned}
+}
+
+\lfm{
+	\label{eq:func_cond}
+	\begin{aligned}
+		\dfrac{\Delta y}{y} &= \dfrac{f(x+\Delta x)-f(x)}{f(x)} \approx \dfrac{f'(x)\Delta x}{f(x)} \;\frdbs{\Rightarrow}\; \textrm{cond} \approx \dfrac{\fvt{\Delta y/y}}{\fvt{\Delta x /x}} = \dfrac{\fvt{xf'(x)}}{\fvt{f(x)}}
+	\end{aligned}
+}
+
+\lfm{
+	\label{eq:b_perb_cond}
+	\left.
+	\begin{aligned}
+		& \left.
+		\begin{array}{c}
+			\fbs{Ax} = \fbs{b} \\
+			\fbs{A}\hat{\fbs{x}} = \fbs{b} + \Delta\fbs{b}
+		\end{array}
+		\right\rangle \underset{\Delta\fbs{x}=\hat{\fbs{x}}-\fbs{x}}{\;\frdbs{\Rightarrow}\;} \fbs{A}\Delta\fbs{x} = \Delta\fbs{b} \\
+		& \fVt{\fbs{b}} = \fVt{\fbs{Ax}} \leq \fVt{\fbs{A}} \cdot \fVt{\fbs{x}} \\
+		& \fVt{\Delta\fbs{x}} = \fnVt{\fbs{A}^{-1}\fbs{b}} \leq \fnVt{\fbs{A}^{-1}} \cdot \fVt{\Delta\fbs{b}} \\
+	\end{aligned}
+	\;\right\} \;\frdbs{\Rightarrow}\;
+	\begin{aligned}
+		\dfrac{\fVt{\Delta\fbs{x}}}{\fVt{\fbs{x}}} \leq \fnVt{\fbs{A}^{-1}} \cdot \fVt{\Delta\fbs{b}} \cdot \dfrac{\fVt{\fbs{A}}}{\fVt{\fbs{b}}} = \kappa(\fbs{A}) \dfrac{\fVt{\Delta\fbs{b}}}{\fVt{\fbs{b}}}
+	\end{aligned}
+}
+
+\lfm{
+	\label{eq:A_perb_cond}
+	\begin{aligned}
+		\left.
+		\begin{array}{c}
+			\fbs{Ax}=\fbs{b} \\
+			(\fbs{A}+\fbs{E})\hat{\fbs{x}}=\fbs{b}
+		\end{array}
+		\right\rangle
+		& \Rightarrow \Delta{\fbs{x}} = \hat{\fbs{x}}-\fbs{x} = \fbs{A}^{-1}(\fbs{A}\hat{\fbs{x}}-\fbs{b}) = \fbs{A}^{-1}(-\fbs{E}\hat{\fbs{x}}) = - \fbs{A}^{-1}\fbs{E}\hat{\fbs{x}} \\
+		& \Rightarrow \fVt{\Delta\fbs{x}} \leq \fnVt{\fbs{A}^{-1}} \cdot \fVt{\fbs{E}} \cdot \fVt{\hat{\fbs{x}}} \;\frdbs{\Rightarrow}\;
+		\dfrac{\fVt{\Delta\fbs{x}}}{\fVt{\hat{\fbs{x}}}} \leq \kappa(\fbs{A}) \dfrac{\fVt{\fbs{E}}}{\fVt{\fbs{A}}} \\
+	\end{aligned}
+}
+
+\lfm{
+	\label{eq:Ab_perb_cond}
+	\begin{aligned}
+		\left.
+		\begin{array}{c}
+			\fbs{Ax} = \fbs{b} \\
+			(\fbs{A}+\fbs{E})\hat{\fbs{x}} = \fbs{b} + \Delta\fbs{b}
+		\end{array}
+		\right\rangle
+		& \Rightarrow \Delta\fbs{x} = \hat{\fbs{x}} - \fbs{x} = \fbs{A}^{-1}(\fbs{A}\hat{\fbs{x}}-\fbs{b}) = \fbs{A}^{-1}(\Delta\fbs{b}-\fbs{E}\hat{\fbs{x}}) \\
+		& \Rightarrow \fVt{\Delta\fbs{x}} \leq \fnVt{\fbs{A}^{-1}\Delta\fbs{b}} + \fnVt{\fbs{A}^{-1}\fbs{E}\hat{\fbs{x}}} \leq \fnVt{\fbs{A}^{-1}} \cdot \fVt{\Delta\fbs{b}} + \fnVt{\fbs{A}^{-1}} \cdot \fVt{\fbs{E}} \cdot \fVt{\fbs{x}}\\
+		& \;\frdbs{\Rightarrow}\; \dfrac{\Delta{\fbs{x}}}{\fVt{\fbs{x}}} \leq \dfrac{\fVt{\fbs{A}} \cdot \fnVt{\fbs{A}^{-1}} \cdot \fVt{\Delta \fbs{b}}}{\fVt{\fbs{A}} \cdot \fVt{\fbs{x}}} + \dfrac{\fVt{\fbs{A}} \cdot \fnVt{\fbs{A}^{-1}} \cdot \fVt{\fbs{E}}}{\fVt{\fbs{A}}} = \kappa(\fbs{A}) \fbt{\dfrac{\fVt{\Delta\fbs{b}}}{\fVt{\fbs{b}}} + \dfrac{\fVt{\fbs{E}}}{\fVt{\fbs{A}}}} \\
+	\end{aligned}
+}
+
+\lfm{
+	\label{eq:rel_res_cond}
+	\left.
+	\begin{aligned}
+		\fVt{\Delta\fbs{x}} &= \fVt{\hat{\fbs{x}}-\fbs{x}} = \fnVt{\fbs{A}^{-1}(\fbs{A}\hat{\fbs{x}}-\fbs{b})} \\
+		& \underset{\fbs{r}=\fbs{b}-\fbs{A}\hat{\fbs{x}}}{=} \fnVt{\fbs{A}^{-1}(-\fbs{r})} \leq \fnVt{\fbs{A}^{-1}} \cdot \fVt{\fbs{r}}
+	\end{aligned}
+	\;\right\rangle\;\frdbs{\Rightarrow}\;
+	\dfrac{\fVt{\Delta\fbs{\fbs{x}}}}{\fVt{\fbs{x}}} \leq \dfrac{\fVt{\fbs{A}} \cdot \fnVt{\fbs{A}^{-1}} \cdot \fVt{\fbs{r}}}{\fVt{\fbs{A}} \cdot \fVt{\fbs{x}}} = \kappa(\fbs{A}) \dfrac{\fVt{\fbs{r}}}{\fVt{\fbs{A}} \cdot \fVt{\fbs{x}}} \\
+}
+
+\lfm{
+	\label{eq:A_perb_rel_res}
+	(\fbs{A}+\fbs{E})\hat{\fbs{x}} = \fbs{b} \Rightarrow \fVt{\fbs{r}} = \fVt{\fbs{b}-\fbs{A}\hat{\fbs{x}}} = \fVt{\fbs{E}\hat{\fbs{x}}} \leq \fVt{\fbs{E}} \cdot \fVt{\hat{\fbs{x}}}
+	\;\frdbs{\Rightarrow}\; \dfrac{\fVt{\fbs{r}}}{\fVt{\fbs{A}} \cdot \fVt{\hat{\fbs{x}}}} \leq \dfrac{\fVt{\fbs{E}}}{\fVt{\fbs{A}}}
+}
+
+\lfm{
+	\label{eq:lu_l1ln1}
+	\left.
+	\begin{array}{c}
+		\fbs{MA}=\fbs{U} \\
+		\fbs{A}=\fbs{LU} \\
+	\end{array}
+	\right\rangle \Rightarrow \fbs{L}=\fbs{M}^{-1} = \fbt{\fbs{M}_{n-1} \cdots \fbs{M}_1}^{-1} = \fbs{M}_1^{-1} \cdots \fbs{M}_{n-1}^{-1} \;\frdbs{=}\; \fbs{L}_1 \cdots \fbs{L}_{n-1}
+}
+
+\lfm{
+	\label{eq:lu_mkmj_lklj}
+	\left.\begin{aligned}
+		\fbs{M}_k\fbs{M}_j &= \fbt{\fbs{I}-\fbs{me}_k^T}\fbt{\fbs{I}-\fbs{te}_j^T} = \fbs{I} - \fbs{te}_j^T - \fbs{me}_k^T + \fbs{me}_k^T\fbs{te}_j^T \;  \\
+		\fbs{L}_k\fbs{L}_j &= \fbt{\fbs{I}+\fbs{me}_k^T}\fbt{\fbs{I}+\fbs{te}_j^T} = \fbs{I} + \fbs{te}_j^T + \fbs{me}_k^T + \fbs{me}_k^T\fbs{te}_j^T \;
+	\end{aligned}\right\rangle
+	\overset{\fbs{e}_k^T\fbs{t}=0}{\underset{\text{if }j>k}{\frdbs{=}}}
+	\left\langle\begin{aligned}
+		\fbs{I} - \fbs{te}_j^T - \fbs{me}_k^T \\
+		\fbs{I} + \fbs{te}_j^T + \fbs{me}_k^T \\
+	\end{aligned}\right.
+}
+
+\lfm{
+	\label{eq:lu_ppvt_comp}
+	\begin{aligned}
+		\fbs{O}_{\text{lu}} = \sum_{i=1}^{n-1}\fbt{\sum_{j=i+1}^n1+\sum_{j=i+1}^n\sum_{k=i+1}^n2} = \sum_{i=1}^{n-1}\fbt{n-i+2(n-i)^2} &= \dfrac{n(n-1)}{2} + 2\dfrac{n(n-1)(2n-1)}{6} \\
+		&= \dfrac{2}{3}n^3+\fsp{O}(n^2)
+	\end{aligned}
+}
+
+\pagebreak
+
+\lfm{
+	\label{eq:chol_fact_growth_factor}
+	\fbs{A} = \fbs{L}_0 \underbrace{\fbs{D}\fbs{L}_0^T}_{\fbs{U}} \Rightarrow \fbs{U}^T=\fbs{L}_0\fbs{D} \;\frdbs{\Rightarrow}\;
+	\rho_{\text{chol}} = \dfrac{\max\fbc{\fvt{\fbs{U}^T(i,j)}}}{\max\{\fvt{a_{ij}}\}}
+	= \dfrac{\max\fbc{\fvt{l_{ij} \cdot l_{jj}}}}{\max\{\fvt{a_{ij}}\}}
+	\leq \dfrac{\max\fbc{l^2_{ij}}}{\max\{a_{ii}\}} \leq 1
+}
+
+\lfm{
+	\label{eq:chol_fact_complexity}
+	\begin{aligned}
+		\fsp{O}_{\text{chol}} =
+		\sum_{j=1}^n \fsbt{
+			\fbt{1 + \sum_{k=1}^{j-1}2 + 1} + \sum_{i=j+1}^n \fbt{1 + \sum_{k=1}^{j-1} 2 + 1}
+		} &=
+		\sum_{j=1}^n \fbt{ 2j + \sum_{i=j+1}^n 2j } = 2(n+1)\sum_{j=1}^n j - 2\sum_{j=1}^n j^2 \\
+		&= n(n+1)^2 - \dfrac{n(n+1)(2n+1)}{3} \;\frdbs{=}\; \dfrac{1}{3}n^3 + \fsp{O}(n^2)
+	\end{aligned}
+}
+
+\lfm{
+	\label{eq:thomas_tridiag_complexity}
+	\fsp{O}_{\text{thomas}} = \sum_{i=1}^{n} 6+\sum_{i=n}^1 2=8n
+}
+
+\lfm{
+	\label{eq:pertb_delta_res}
+	\fbs{\delta x} = \fbs{x}^\ast - \fbs{x} = \fbs{x}^\ast -
+	\fbs{A}^{-1}\fbs{b} = \fbs{A}^{-1}(\fbs{Ax}^\ast-\fbs{b}) =
+	-\fbs{A}^{-1}\fbs{r}
+	\;\frdbs{\Rightarrow}\; \fVt{\fbs{\delta x}} \leq \fnVt{\fbs{A}^{-1}} \cdot \fVt{\fbs{r}}
+}
+
+\lfm{
+	\label{eq:pertb_delta_approx}
+	\left.
+	\begin{aligned}
+		(\fbs{A} &+ \fbs{\delta A})\fbs{x}^\ast = \fbs{b} + \fbs{\delta b} = \fbs{Ax} + \fbs{\delta b} \\
+		\Rightarrow\; & \fbs{A}(\overbrace{\fbs{x}^\ast-\fbs{x}}^{\fbs{\delta x}}) = -\fbs{\delta Ax}^\ast + \fbs{\delta b} \\
+		\Rightarrow\; & \fbs{\delta x} = \fbs{A}^{-1}(-\fbs{\delta Ax}^\ast+\fbs{\delta b})
+	\end{aligned} \;
+	\right\} \;\frdbs{\Rightarrow}\;
+	\begin{array}{cll}
+		\fVt{\fbs{\delta x}} & \leq & \fnVt{\fbs{A}^{-1}} \cdot \fbt{\fVt{\fbs{\delta A}} \cdot \fVt{\fbs{x}^\ast} + \fVt{\fbs{\delta b}}} \vspace{1em} \\
+		\dfrac{\fVt{\fbs{\delta x}}}{\fVt{\fbs{x}^\ast}} & \leq & \fnVt{\fbs{A}^{-1}} \cdot \fVt{\fbs{A}} \cdot \fbt{\dfrac{\fVt{\fbs{\delta A}}}{\fVt{\fbs{A}}} + \dfrac{\fVt{\fbs{\delta b}}}{\fVt{\fbs{A}} \cdot \fVt{\fbs{x}^\ast}}} \\
+	\end{array}
+}
+
+\lfm{
+	\label{eq:pertb_delta_exact}
+	\begin{aligned}
+		& (\fbs{A} + \fbs{\delta A})\fbs{x}^\ast=\fbs{b}+\fbs{\delta b}
+		\;\Rightarrow\; \overbrace{\fbs{\delta x}+\fbs{x}}^{\fbs{x}^\ast} = (\fbs{A}+\fbs{\delta A})^{-1}(\fbs{b}+\fbs{\delta b}) \\
+		&
+			\begin{array}[t]{@{}cccl}
+				\;\frdbs{\Rightarrow}\; & \fbs{\delta x} & = &
+				(\fbs{A} + \fbs{\delta A})^{-1} \fbbt{\fbs{b} + \fbs{\delta b} - (\fbs{A} + \fbs{\delta A}) \fbs{x}} = (\fbs{A}+\fbs{\delta A})^{-1} \fbt{\fbs{b} - \fbs{Ax} - \fbs{\delta Ax}+\fbs{\delta b}} \\
+				~ & ~ & = & (\fbs{A}+\fbs{\delta A})^{-1} \fbt{-\fbs{\delta Ax} + \fbs{\delta b}} \overset{\dagger}{\;\frdbs{=}\;}
+				(\fbs{I}+\fbs{A}^{-1}\fbs{\delta A})^{-1} \fbs{A}^{-1} (-\fbs{\delta Ax}+\fbs{\delta b}) \\
+				\;\frdbs{\Rightarrow}\; & \dfrac{\fVt{\fbs{\delta x}}}{\fVt{\fbs{x}}} & \leq & \fnVt{(\fbs{I}+\fbs{A}^{-1}\fbs{\delta A})^{-1}} \cdot \fnVt{\fbs{A}^{-1}} \cdot \fbt{ \fVt{\fbs{\delta A}} + \dfrac{\fVt{\fbs{\delta b}}}{\fVt{\fbs{x}}} } \overset{\ddagger}{\;\frdbs{\leq}\;} \dfrac{\fnVt{\fbs{A}^{-1}}}{ 1 - \fnVt{\fbs{A}^{-1}} \cdot \fVt{\fbs{\delta A}}} \cdot \fbt{ \fVt{\fbs{\delta A}} + \dfrac{\fVt{\fbs{\delta b}}}{\fVt{\fbs{x}}} } \\
+				~ & ~ & = & \dfrac{\fnVt{\fbs{A}^{-1}} \cdot \fVt{\fbs{A}}}{ 1 - \fnVt{\fbs{A}^{-1}} \cdot \fVt{\fbs{A}} \cdot \dfrac{\fVt{\fbs{\delta A}}}{\fVt{\fbs{A}}}} \cdot \fbt{\dfrac{\fVt{\fbs{\delta A}}}{\fVt{\fbs{A}}} + \dfrac{\fVt{\fbs{\delta b}}}{\fVt{\fbs{A}} \cdot \fVt{\fbs{x}}} } \\
+				~ & ~ & = & \dfrac{\kappa(\fbs{A})}{1-\kappa(\fbs{A}) \cdot \dfrac{\fVt{\fbs{\delta A}}}{\fVt{\fbs{A}}}} \cdot \fbt{\dfrac{\fVt{\fbs{\delta A}}}{\fVt{\fbs{A}}} + \dfrac{\fVt{\fbs{\delta b}}}{\fVt{\fbs{b}}}}
+			\end{array} \\
+		& ^{\frdbs{\dagger}}(\fbs{X}+\fbs{Y})^{-1} = \fbt{\fbs{X}(\fbs{I}+\fbs{X}^{-1}\fbs{Y})}^{-1}=(\fbs{I}+\fbs{X}^{-1}\fbs{Y})^{-1}\fbs{X}^{-1} \esp ^{\frdbs{\ddagger}} \fnVt{(\fbs{I}-\fbs{X})^{-1}} \leq \dfrac{1}{1-\fVt{\fbs{X}}} \text{ if } \fVt{\fbs{X}}<1
+	\end{aligned}
+}
+
+\lfm{
+	\label{eq:iter_refine_az_r}
+	\fbs{A}(\fbs{x}^\ast+\fbs{z})=\fbs{Ax}^\ast+\fbs{Az}=(\fbs{b}-\fbs{r})+\fbs{r}=\fbs{b}
+}
+
+\lfm{
+	\label{eq:iter_refine_tri_lin_sys}
+	\left.\begin{aligned}
+		\fbs{PA} &= \fbs{LU} \\
+		\fbs{Az} &= \fbs{r} \\
+	\end{aligned} \;\right\rangle \Rightarrow
+	\fbs{PAz}=\fbs{LUz}=\fbs{Pr} \;\frdbs{\Rightarrow}\;
+	\left\langle \; \begin{aligned}
+		\fbs{Ly} &= \fbs{Pr} \\
+		\fbs{Uz} &= \fbs{y} \\
+	\end{aligned} \right.
+}
+
+\lfm{
+	\label{eq:lsq_pertb_in_b}
+	\begin{aligned}
+		& \left.\begin{aligned}
+			\fbs{A}^T\fbs{A}(\fbs{x}+\Delta\fbs{x}) &=
+			\fbs{A}^T(\fbs{b}+\Delta\fbs{b}) \\
+			\fbs{A}^T\fbs{Ax} &= \fbs{A}^T\fbs{b}
+		\end{aligned} \;\right\rangle \Rightarrow
+		\fbs{A}^T\fbs{A}\Delta\fbs{x} = \fbs{A}^T\Delta\fbs{b}
+		\;\frdbs{\Rightarrow}\;
+		\Delta\fbs{x}=(\fbs{A}^T\fbs{A})^{-1}\fbs{A}^T\Delta\fbs{b} \\
+		& \left.\begin{aligned}
+			\fbs{A}^+ &\;\frdbs{\triangleq}\;
+			(\fbs{A}^T\fbs{A})^{-1}\fbs{A}^T \\
+			\kappa(\fbs{A}) &\;\frdbs{\triangleq}\;
+			\fVt{\fbs{A}} \cdot \fnVt{\fbs{A}^+} \\
+			\dfrac{\fVt{\fbs{Ax}}}{\fVt{\fbs{b}}} &\;\frdbs{\triangleq}\;
+			\cos\theta
+		\end{aligned} \;\right\} \;\frdbs{\Rightarrow}\;
+		\begin{aligned}
+			\dfrac{\fVt{\Delta\fbs{x}}}{\fVt{\fbs{x}}} = \fnVt{\fbs{A}^+}
+			\cdot \dfrac{\fVt{\Delta\fbs{b}}}{\fVt{\fbs{x}}} &=
+			\kappa(\fbs{A}) \cdot \dfrac{\fVt{\fbs{b}}}{\fVt{\fbs{A}} \cdot
+			\fVt{\fbs{x}}} \cdot \dfrac{\fVt{\Delta\fbs{b}}}{\fVt{\fbs{b}}} \\
+			&\;\frdbs{\leq}\; \kappa(\fbs{A}) \cdot
+			\dfrac{\fVt{\fbs{b}}}{\fVt{\fbs{Ax}}} \cdot
+			\dfrac{\fVt{\Delta\fbs{b}}}{\fVt{\fbs{b}}} =
+			\kappa(\fbs{A}) \cdot \dfrac{1}{\cos\theta} \cdot
+			\dfrac{\fVt{\Delta\fbs{b}}}{\fVt{\fbs{b}}}
+		\end{aligned}
+	\end{aligned}
+}
+
+\lfm{
+	\label{eq:lsq_pertb_in_a}
+	\begin{aligned}
+		& (\fbs{A}+\fbs{E})^T(\fbs{A}+\fbs{E})(\fbs{x}+\Delta\fbs{x}) =
+		(\fbs{A}+\fbs{E})^T\fbs{b} \\
+		\Rightarrow\; &
+		(\fbs{A}^T\fbs{A} + \fbs{A}^T\fbs{E} + \fbs{E}^T\fbs{A} +
+		\fbs{E}^T\fbs{E})(\fbs{x} + \Delta\fbs{x}) =
+		(\fbs{A}+\fbs{E})^T\fbs{b} \\
+		\Rightarrow\; &
+		\overbrace{\sout{\fbs{A}^T\fbs{A}\fbs{x}}}^{\fbs{A}^T\fbs{b}} +
+		\fbs{A}^T\fbs{E}\fbs{x} + \fbs{E}^T\fbs{A}\fbs{x} +
+		\uwave{\fbs{E}^T\fbs{E}\fbs{x}} + \fbs{A}^T\fbs{A}\Delta\fbs{x} +
+		\uwave{\fbs{A}^T\fbs{E}\Delta\fbs{x} +
+		\fbs{E}^T\fbs{A}\Delta\fbs{x} + \fbs{E}^T\fbs{E}\Delta\fbs{x}} =
+		\sout{\fbs{A}^T\fbs{b}} + \fbs{E}^T\fbs{b} \\
+		\Rightarrow\; &
+		\begin{aligned}
+			\fbs{A}^T\fbs{A}\Delta\fbs{x} &\;\frdbs{\approx}\;
+			\fbs{E}^T\fbs{b} - \fbs{E}^T\fbs{Ax} - \fbs{A}^T\fbs{Ex} \quad
+			(\small {\color{blue} \text{drop $2^\text{nd}$ terms of small
+			pertub.\@}}) \\
+			&=\; \fbs{E}^T \underbrace{(\fbs{b}-\fbs{Ax})}_{\fbs{r}} -
+			\fbs{A}^T\fbs{Ex}
+		\end{aligned} \\
+		\Rightarrow\; &
+		\Delta\fbs{x} = (\fbs{A}^T\fbs{A})^{-1}\fbs{E}^T\fbs{r} -
+		\underbrace{(\fbs{A}^T\fbs{A})^{-1}\fbs{A}^T}_{\fbs{A}^+}
+		\fbs{Ex} \;\frdbs{\lessapprox}\;
+		\fnVt{(\fbs{A}^T\fbs{A})^{-1}} \cdot \fVt{\fbs{E}} \cdot
+		\fVt{\fbs{r}} + \fnVt{\fbs{A}^+} \cdot \fVt{\fbs{E}} \cdot
+		\fVt{\fbs{x}} \\
+		\Rightarrow\; &
+		\dfrac{\fVt{\Delta\fbs{x}}}{\fVt{\fbs{x}}} \lessapprox
+		\fnVt{(\fbs{A}^T\fbs{A})^{-1}} \cdot \fVt{\fbs{E}} \cdot
+		\dfrac{\fVt{\fbs{r}}}{\fVt{\fbs{x}}} +
+		\fnVt{\fbs{A}^+} \cdot \fVt{\fbs{E}} \vspace{2em} \\
+		\Rightarrow\; &
+		\left.\begin{aligned}
+			\kappa^2(\fbs{A}) &\;\frdbs{\triangleq}\; \fVt{\fbs{A}}^2 \cdot
+			\fnVt{(\fbs{A}^T\fbs{A})^{-1}} \;[\ref{eq:sqr_cond_a}] \\
+			\tan\theta &\;\frdbs{\triangleq}\; \dfrac{\fVt{\fbs{r}}}{\fVt{\fbs{Ax}}} \\
+		\end{aligned}\;\right\} \;\frdbs{\Rightarrow}\;
+		\begin{aligned}
+			\dfrac{\fVt{\Delta\fbs{x}}}{\fVt{\fbs{x}}} &\lessapprox
+			\kappa^2(\fbs{A}) \cdot \dfrac{\fVt{\fbs{E}}}{\fVt{\fbs{A}}} \cdot
+			\dfrac{\fVt{\fbs{r}}}{\fVt{\fbs{A}} \cdot \fVt{\fbs{x}}} +
+			\kappa(\fbs{A}) \cdot \dfrac{\fVt{\fbs{E}}}{\fVt{\fbs{A}}} \\
+			&\leq \kappa^2(\fbs{A}) \cdot \dfrac{\fVt{\fbs{E}}}{\fVt{\fbs{A}}} \cdot
+			\dfrac{\fVt{\fbs{r}}}{\fVt{\fbs{Ax}}} +
+			\kappa(\fbs{A}) \cdot \dfrac{\fVt{\fbs{E}}}{\fVt{\fbs{A}}} \\
+			&= \fbt{\kappa^2(\fbs{A}) \cdot \tan\theta + \kappa(\fbs{A})}
+			\cdot \dfrac{\fVt{\fbs{E}}}{\fVt{\fbs{A}}}
+		\end{aligned}
+	\end{aligned}
+}
+
+\lfm{
+	\label{eq:sqr_cond_a}
+	\kappa^2(\fbs{A}) = ???? \\ \kappa^2(\fbs{A})=\kappa(A^TA)
+}
+
+\lfm{
+	\label{eq:ata_chol_fact_complexity}
+	\left.\begin{aligned}
+		& \fsp{O}(\fbs{A}^T\fbs{A}) = \text{\sout{2}}m^2n
+		\text{ \small\color{blue}(symm.)}\\
+		& \fsp{O}_{\text{chol}}(\fbs{A}) = \dfrac{1}{3}n^3+\fsp{O}(n^2) \;[\ref{eq:chol_fact_complexity}]
+	\end{aligned} \;\right\rangle \;\frdbs{\Rightarrow}\;
+	\fsp{O}_{\text{chol}}{(\fbs{A}^T\fbs{A})} =
+	\underbrace{m^2n}_{\text{major}} + \dfrac{1}{3}n^3 + \fsp{O}(n^2)
+}

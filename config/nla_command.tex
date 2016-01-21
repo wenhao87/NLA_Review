@@ -1,0 +1,61 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% ID: command.tex whchen
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Text Format
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\tbl}[1]{\textbf{{\large #1}}}
+\newcommand{\tul}[1]{\underline{#1}}
+\newcommand{\trd}[1]{{\color{red} #1}}
+\newcommand{\tsp}{@{\hskip 0.3in}}	                     % space in array
+\newcommand{\trdbf}[1]{{\color{red} \textbf{#1}}}
+
+% new uwave
+\DeclareRobustCommand\uwave{\bgroup\markoverwith{\lower8pt\hbox{\sixly\textcolor{pink}{\char58}}}\ULon}
+
+% Formula Simplicity
+\newcommand{\dsp}{\displaystyle}
+\newcommand{\fvt}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\fVt}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\fnVt}[1]{\lVert #1 \rVert}
+\newcommand{\fbVt}[1]{\big\lVert #1 \big\rVert}
+\newcommand{\fbt}[1]{\left( #1 \right)}
+\newcommand{\fbbt}[1]{\big( #1 \big)}
+\newcommand{\fsbt}[1]{\left[ #1 \right]}
+\newcommand{\fbc}[1]{\left\{ #1 \right\}}
+\newcommand{\fbs}[1]{\boldsymbol{#1}}
+\newcommand{\frdbs}[1]{{\color{red} \boldsymbol{#1}}}
+\newcommand{\fts}[2]{#1 \times #2}
+\newcommand{\fls}[1]{\mathbb{#1}}			            % linear space
+\newcommand{\fsp}[1]{\mathcal{#1}}		                % subspace
+\newcommand{\vep}{\varepsilon}
+\newcommand{\fpm}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+
+\newcommand{\Llr}{\Longleftrightarrow}
+\newcommand{\Lrr}{\Longrightarrow}
+
+\newcommand{\ifof}{\textrm{iff. }}
+
+% Formula Blank
+\newcommand{\esp}{\enspace,\enspace}                   % ensp , ensp
+\newcommand{\qsp}{\quad,\quad}                         % quad , quad
+
+% Text Space
+\newcommand{\lvs}{\vspace{-3em}}	                   % list vspace
+\newcommand{\evs}{\vspace{-3em}}	                   % l1 \evs eq.
+\newcommand{\tvs}{\vspace{-1em}}	                   % eq. \tvs l2
+\newcommand{\mvs}[1]{\vspace{#1}}	                   % manually vspace
+
+% Items
+\newcommand{\itmlone}[1]{\lvs\begin{itemize}
+[leftmargin=4em, itemsep=1pt] #1 \end{itemize}}                       % level 1
+\newcommand{\itmltwo}[1]{\lvs\begin{itemize}
+[leftmargin=6em, itemsep=1pt, label=\textdagger] #1 \end{itemize}}    % level 2
+\newcommand{\itmlthr}[1]{\lvs\begin{itemize}
+[leftmargin=0em, itemsep=1pt, label=\textdaggerdbl] #1 \end{itemize}} % level 3
+\newcommand{\itmind}[1]{{\setlength\itemindent{2em} #1}}              % sub
+
+% formula page
+\newcommand{\lfm}[1]{\begin{fleqn}\eq{\begin{split}#1\end{split}}\end{fleqn}\vspace{-2em}}
